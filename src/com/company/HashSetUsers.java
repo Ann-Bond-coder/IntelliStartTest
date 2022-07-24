@@ -64,7 +64,7 @@ public class HashSetUsers {
             }
             if ((user.getUserName().equals(userName)) && (user.getUserLastName().equals(userLastName))) {
                 iterator.remove();
-                System.out.println("The user " + userName + " " + userLastName + "has been deleted successfully.");
+                System.out.println("The user " + userName + " " + userLastName + " has been deleted successfully.");
             } else {
                 System.out.println("Error. There are no users with this name and last name in the list!");
                 System.exit(0);
