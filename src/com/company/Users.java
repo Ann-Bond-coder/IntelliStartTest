@@ -5,6 +5,7 @@ public class Users {
     private String userName;
     private String userLastName;
     private double userAmountOfMoney;
+    private String purchases;
 
     public int getUserId() {
         return userId;
@@ -38,16 +39,25 @@ public class Users {
         this.userAmountOfMoney = userAmountOfMoney;
     }
 
-    public Users(int userId, String userName, String userLastName, double userAmountOfMoney) {
+    public String getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(String purchases) {
+        this.purchases = purchases;
+    }
+
+    public Users(int userId, String userName, String userLastName, double userAmountOfMoney, String purchases) {
         this.userId = userId;
         this.userName = userName;
         this.userLastName = userLastName;
         this.userAmountOfMoney = userAmountOfMoney;
+        this.purchases = purchases;
     }
 
     @Override
     public String toString() {
         return "\nUser № " + this.userId + "; Name: " +  this.userName + "; Last name: " + this.userLastName +
-                "; Amount of money: " + this.userAmountOfMoney;
+                "; Amount of money: " + this.userAmountOfMoney + "; Purchases: " + this.purchases;
     }
 }

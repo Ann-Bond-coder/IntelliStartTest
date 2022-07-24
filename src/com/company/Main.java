@@ -22,7 +22,7 @@ public class Main {
      */
     public static void menuController() {
         int userIdGenerated = 1, productIdGenerated = 1;
-        String NameEntered, LastNameEntered;
+        String NameEntered, LastNameEntered, purchases = null;
         double AmountOfMoneyEntered;
         HashSetUsers hashSetUser = new HashSetUsers();
         HashSetProducts hashSetProduct = new HashSetProducts();
@@ -42,7 +42,7 @@ public class Main {
                     System.out.print("Enter the user's amount of money: ");
                     AmountOfMoneyEntered = in.nextDouble();
                     hashSetUser.addUser(userIdGenerated, NameEntered, LastNameEntered,
-                            AmountOfMoneyEntered);
+                            AmountOfMoneyEntered, purchases);
                     userIdGenerated++;
                     break;
                 case "show all users":

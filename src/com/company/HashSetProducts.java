@@ -29,6 +29,7 @@ public class HashSetProducts {
                 System.exit(0);
             } else {
                 productsHashSet.add(new Products(productId, productName, productPrice));
+                System.out.println("The product has been added.");
             }
         }
     }
@@ -54,15 +55,17 @@ public class HashSetProducts {
     public void deleteProduct(String productName) {
         if (!productsHashSet.isEmpty()) {
             Iterator<Products> iterator = productsHashSet.iterator();
-            while (iterator.hasNext()) {
-                Products product = iterator.next();
-                if (product.getProductName().equals(productName)) {
-                    iterator.remove();
-                    System.out.println("The product " + productName + " deleted successfully.");
-                } else {
-                    System.out.println("Error. There are no products with this name in the list! ");
-                    System.exit(0);
-                }
+            Products product = iterator.next();
+            while ((iterator.hasNext()) && (!product.getProductName().equals(productName))) {
+                product = iterator.next();
+            }
+            if (product.getProductName().equals(productName)) {
+                iterator.remove();
+                System.out.println("The product " + productName + "has been deleted successfully.");
+
+            } else {
+                System.out.println("Error. There are no products with this name in the list! ");
+                System.exit(0);
             }
         } else {
             System.out.println("Error. There are no products in the list.");

@@ -20,7 +20,7 @@ public class HashSetUsers {
      * @param userAmountOfMoney - the money that user has,
      *                          also the client writes in console the amount.
      */
-    public void addUser(int userId, String userName, String userLastName, double userAmountOfMoney) {
+    public void addUser(int userId, String userName, String userLastName, double userAmountOfMoney, String purchases) {
         if (userName.isBlank() || userLastName.isBlank()) {
             System.out.println("The user's name or last name is incorrect!");
             System.exit(0);
@@ -30,7 +30,8 @@ public class HashSetUsers {
                         "The client's money amount must be more than 0!");
                 System.exit(0);
             } else {
-                usersHashSet.add(new Users(userId, userName, userLastName, userAmountOfMoney));
+                usersHashSet.add(new Users(userId, userName, userLastName, userAmountOfMoney, purchases));
+                System.out.println("The user has been added.");
             }
         }
     }
@@ -57,20 +58,21 @@ public class HashSetUsers {
     public void deleteUser(String userName, String userLastName) {
         if (!usersHashSet.isEmpty()) {
             Iterator<Users> iterator = usersHashSet.iterator();
-            while (iterator.hasNext()) {
-                Users user = iterator.next();
-                if ((user.getUserName().equals(userName)) && (user.getUserLastName().equals(userLastName))) {
-                    iterator.remove();
-                    System.out.println("The user " + userName + " " + userLastName + " deleted successfully.");
-                    break;
-                } else {
-                    System.out.println("Error. There are no users with this name and last name in the list!");
-                    System.exit(0);
-                }
+            Users user = iterator.next();
+            while ((iterator.hasNext()) && (!user.getUserName().equals(userName)) && (!user.getUserLastName().equals(userLastName))) {
+                user = iterator.next();
             }
-        } else
+            if ((user.getUserName().equals(userName)) && (user.getUserLastName().equals(userLastName))) {
+                iterator.remove();
+                System.out.println("The user " + userName + " " + userLastName + "has been deleted successfully.");
+            } else {
+                System.out.println("Error. There are no users with this name and last name in the list!");
+                System.exit(0);
+            }
+        } else {
             System.out.println("Error. There are no users in the list.");
-        System.exit(0);
+            System.exit(0);
+        }
     }
 }
 
