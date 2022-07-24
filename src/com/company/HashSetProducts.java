@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * HashSetProducts - contains the list of products.
@@ -10,6 +11,7 @@ import java.util.Iterator;
  */
 public class HashSetProducts {
     static HashSet<Products> productsHashSet = new HashSet<Products>();
+    static HashSet<Users> usersHashSet = new HashSet<Users>();
 
     /**
      * Method for adding a new product with a set of parameters.
@@ -56,16 +58,25 @@ public class HashSetProducts {
         if (!productsHashSet.isEmpty()) {
             Iterator<Products> iterator = productsHashSet.iterator();
             Products product = iterator.next();
+            Iterator<Users> iteratorUsers = usersHashSet.iterator();
+            Users user = iteratorUsers.next();
+            /*For deleting the product from the list*/
             while ((iterator.hasNext()) && (!product.getProductName().equals(productName))) {
                 product = iterator.next();
             }
             if (product.getProductName().equals(productName)) {
                 iterator.remove();
                 System.out.println("The product " + productName + "has been deleted successfully.");
-
             } else {
                 System.out.println("Error. There are no products with this name in the list! ");
                 System.exit(0);
+            }
+            /*For deleting the product from user purchases*/
+            while ((iteratorUsers.hasNext()) && (!user.getPurchases().equals(productName))) {
+                user = iteratorUsers.next();
+            }
+            if (user.getPurchases().equals(productName)) {
+                user.setPurchases(null);
             }
         } else {
             System.out.println("Error. There are no products in the list.");
