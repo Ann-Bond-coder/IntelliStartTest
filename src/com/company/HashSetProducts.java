@@ -10,7 +10,6 @@ import java.util.Iterator;
  */
 public class HashSetProducts {
     static HashSet<Products> productsHashSet = new HashSet<Products>();
-    static HashSet<Users> usersHashSet = new HashSet<Users>();
 
     /**
      * Method for adding a new product with a set of parameters.
