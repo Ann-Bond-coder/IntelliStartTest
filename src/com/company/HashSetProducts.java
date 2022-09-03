@@ -2,7 +2,6 @@ package com.company;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Objects;
 
 /**
  * HashSetProducts - contains the list of products.
